@@ -1,0 +1,73 @@
+================================================================================
+EXPLICACIÓN DETALLADA DEL PROYECTO: ALPACHANGE (ANDROID)
+================================================================================
+
+1. RESUMEN DEL PROYECTO
+-----------------------
+AlpaChange es una aplicación Android diseñada para los estudiantes de la
+universidad UNTELS. Su objetivo principal es permitir a los alumnos crear
+peticiones, votar por causas comunes y servir como un canal de comunicación
+directo con la universidad ("La voz de los estudiantes UNTELS").
+
+2. ESTRUCTURA DE PAQUETES (CÓDIGO FUENTE)
+-----------------------------------------
+El proyecto sigue una estructura organizada por capas, preparándose para una
+arquitectura limpia (Clean Architecture):
+
+- com.tuapp.ui: Contiene los elementos de la interfaz de usuario.
+    - screens.bienvenida: Contiene la pantalla de inicio actual.
+    - components: (Preparado para componentes reutilizables).
+- com.tuapp.data: Capa de datos (actualmente vacía, preparada para el futuro).
+    - model: Para las clases de datos (POJOs/Data Classes).
+    - network: Para la conexión con APIs.
+    - repository: Para la gestión de fuentes de datos.
+- com.tuapp.utils: Clases de utilidad generales.
+
+3. COMPONENTES CLAVE DEL CÓDIGO
+-------------------------------
+
+A) MainActivity.kt (com.tuapp.ui.screens.bienvenida)
+   - Es el punto de entrada de la aplicación.
+   - Hereda de AppCompatActivity.
+   - Su única función actual es inflar y mostrar la vista de bienvenida 
+     (layout activity_main).
+
+B) activity_main.xml (Layout de la Pantalla de Bienvenida)
+   - Diseñado con un LinearLayout vertical y centrado.
+   - Muestra el título "AlpaChange", un subtítulo, una descripción del 
+     propósito de la app y la versión actual.
+   - Utiliza recursos centralizados para colores y dimensiones.
+
+4. RECURSOS DEL SISTEMA (res/values)
+------------------------------------
+
+A) colores.xml (Paleta de Colores de Marca)
+   - brand_azul_marino (#102636): Color de fondo principal.
+   - brand_naranja (#ea6119): Color de acento para títulos y botones.
+   - brand_turquesa (#0eba95): Color secundario para detalles.
+   - Se definen roles semánticos (fondo_principal, texto_claro, etc.) para 
+     facilitar el mantenimiento del diseño.
+
+B) dimens.xml (Espaciado y Tipografía)
+   - Define un sistema de espaciado estándar (espacio_xs a espacio_xl).
+   - Define tamaños de texto proporcionales (texto_pequeno a texto_titulo_grande).
+   - Esto asegura una interfaz consistente en diferentes pantallas.
+
+C) strings.xml (Textos de la App)
+   - Contiene todos los textos visibles en español.
+   - Facilita la futura traducción de la app y la edición rápida de mensajes.
+
+5. CONFIGURACIÓN DEL MANIFIESTO (AndroidManifest.xml)
+-----------------------------------------------------
+- Define el nombre de la app como "AlpaChange".
+- Establece el tema visual "Theme.AlpaChange".
+- Configura la MainActivity como la actividad principal (LAUNCHER), lo que 
+  significa que es la primera que ve el usuario al abrir la aplicación.
+
+6. ESTADO ACTUAL DEL DESARROLLO
+-------------------------------
+Hasta este punto, el proyecto cuenta con la base visual y estructural sólida:
+- Diseño visual definido (Colores y Dimensiones).
+- Pantalla de bienvenida funcional.
+- Estructura de paquetes lista para escalar a funciones más complejas como 
+  el login, creación de peticiones y votaciones.

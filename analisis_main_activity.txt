@@ -1,0 +1,77 @@
+================================================================================
+ANÁLISIS TÉCNICO DETALLADO: MainActivity.kt
+================================================================================
+
+Archivo: app/src/main/java/com/tuapp/ui/screens/bienvenida/MainActivity.kt
+Proyecto: AlpaChange
+
+Este archivo es la actividad principal y el punto de entrada de la aplicación.
+A continuación, se detalla cada sección del código:
+
+1. DECLARACIÓN DEL PAQUETE (package)
+------------------------------------
+package com.tuapp.ui.screens.bienvenida
+
+- Qué hace: Define la ubicación lógica de este archivo dentro de la estructura
+  del proyecto. 
+- Importancia: Permite que otras partes de la aplicación encuentren y utilicen
+  esta clase, y ayuda a organizar el código siguiendo las convenciones de 
+  Android (com.tuapp -> ui -> screens -> bienvenida).
+
+2. IMPORTACIONES (imports)
+--------------------------
+import android.os.Bundle
+- Qué hace: Importa la clase Bundle del framework de Android.
+- Propósito: Bundle se utiliza para pasar datos entre actividades o para 
+  guardar el estado de la instancia de la actividad (por ejemplo, si la 
+  pantalla gira). En este archivo, se usa en el método onCreate.
+
+import androidx.appcompat.app.AppCompatActivity
+- Qué hace: Importa la clase base para las actividades modernas de Android.
+- Propósito: Proporciona compatibilidad con versiones antiguas de Android 
+  mientras permite usar características modernas (como la barra de acciones o 
+  temas actualizados).
+
+import com.tuapp.R
+- Qué hace: Importa la clase R (Resources) generada automáticamente por Android.
+- Propósito: La clase R es un índice de todos los recursos del proyecto 
+  (diseños, imágenes, strings, colores). Sin este import, el código no podría 
+  referenciar el diseño R.layout.activity_main.
+
+3. DEFINICIÓN DE LA CLASE (class)
+---------------------------------
+class MainActivity : AppCompatActivity() { ... }
+
+- Nombre: MainActivity.
+- Herencia (: AppCompatActivity()): Indica que esta clase es una Actividad. 
+  Al heredar de AppCompatActivity, obtiene todo el comportamiento necesario 
+  para gestionar el ciclo de vida de una pantalla en Android.
+
+4. MÉTODOS (methods)
+--------------------
+override fun onCreate(savedInstanceState: Bundle?) { ... }
+
+- override: Indica que estamos sobreescribiendo un método que ya existe en la 
+  clase padre (AppCompatActivity).
+- fun onCreate: Es el método más importante del ciclo de vida de una actividad. 
+  Se ejecuta automáticamente cuando la aplicación se inicia por primera vez.
+- savedInstanceState: Bundle?: Es un parámetro que contiene el estado guardado 
+  previamente de la actividad (si existe). El "?" significa que puede ser nulo.
+
+Dentro de onCreate:
+- super.onCreate(savedInstanceState): Llama a la lógica de inicialización de la 
+  clase padre. Es obligatorio llamarlo para que la actividad se configure 
+  correctamente.
+- setContentView(R.layout.activity_main): Es la instrucción que "dibuja" la 
+  interfaz. Vincula el archivo de diseño XML (activity_main.xml) con esta 
+  clase Kotlin para que el usuario pueda ver la pantalla de bienvenida.
+
+================================================================================
+RESUMEN DE OPERACIÓN
+================================================================================
+Cuando el usuario toca el icono de AlpaChange:
+1. Android busca MainActivity (definida en el Manifiesto).
+2. Se ejecuta onCreate.
+3. El sistema carga los colores, textos y dimensiones definidos en el XML.
+4. Se muestra la pantalla de bienvenida con el mensaje "La voz de los 
+   estudiantes UNTELS".
