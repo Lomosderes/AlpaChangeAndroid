@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta oficial de colores de AlpaChange -->
+<resources>
+
+    <!-- ===== COLORES DE MARCA ===== -->
+    <color name="brand_azul_marino">#102636</color>
+    <color name="brand_naranja">#ea6119</color>
+    <color name="brand_turquesa">#0eba95</color>
+
+    <!-- ===== COLORES DE FONDO ===== -->
+    <color name="fondo_principal">#102636</color>
+    <color name="fondo_secundario">#FFFFFF</color>
+
+    <!-- ===== COLORES DE TEXTO ===== -->
+    <color name="texto_claro">#FFFFFF</color>
+    <color name="texto_oscuro">#102636</color>
+    <color name="texto_acento">#ea6119</color>
+
+    <!-- ===== COLORES DE BOTONES ===== -->
+    <color name="boton_primario">#ea6119</color>
+    <color name="boton_secundario">#0eba95</color>
+    <color name="boton_texto">#FFFFFF</color>
+
+</resources>

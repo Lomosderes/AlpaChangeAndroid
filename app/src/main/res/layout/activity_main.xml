@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla de bienvenida (splash) de AlpaChange -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_principal"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/pantalla_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bienvenida_titulo"
+        android:textColor="@color/texto_acento"
+        android:textSize="@dimen/texto_titulo_grande"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_s"
+        android:text="@string/bienvenida_subtitulo"
+        android:textColor="@color/texto_claro"
+        android:textSize="@dimen/texto_grande" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_l"
+        android:gravity="center"
+        android:text="@string/bienvenida_descripcion"
+        android:textColor="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_xl"
+        android:text="@string/bienvenida_version"
+        android:textColor="@color/brand_turquesa"
+        android:textSize="@dimen/texto_pequeno" />
+
+</LinearLayout>

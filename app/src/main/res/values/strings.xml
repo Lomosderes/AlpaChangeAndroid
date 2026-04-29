@@ -1,0 +1,13 @@
+<!-- Textos visibles de AlpaChange -->
+<resources>
+
+    <!-- ===== APP ===== -->
+    <string name="app_name">AlpaChange</string>
+
+    <!-- ===== PANTALLA BIENVENIDA ===== -->
+    <string name="bienvenida_titulo">AlpaChange</string>
+    <string name="bienvenida_subtitulo">La voz de los estudiantes UNTELS</string>
+    <string name="bienvenida_descripcion">Crea peticiones, vota por causas y haz que tu universidad escuche.</string>
+    <string name="bienvenida_version">v1.0 — Taller de Programación Móvil</string>
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tamaños, márgenes y paddings reutilizables de AlpaChange -->
+<resources>
+
+    <!-- ===== ESPACIADO GENERAL ===== -->
+    <dimen name="espacio_xs">4dp</dimen>
+    <dimen name="espacio_s">8dp</dimen>
+    <dimen name="espacio_m">16dp</dimen>
+    <dimen name="espacio_l">24dp</dimen>
+    <dimen name="espacio_xl">32dp</dimen>
+
+    <!-- ===== TAMAÑOS DE TEXTO ===== -->
+    <dimen name="texto_pequeno">14sp</dimen>
+    <dimen name="texto_normal">16sp</dimen>
+    <dimen name="texto_grande">20sp</dimen>
+    <dimen name="texto_titulo">28sp</dimen>
+    <dimen name="texto_titulo_grande">36sp</dimen>
+
+    <!-- ===== PADDING DE PANTALLAS ===== -->
+    <dimen name="pantalla_padding">24dp</dimen>
+
+</resources>
