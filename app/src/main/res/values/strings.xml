@@ -10,4 +10,18 @@
     <string name="bienvenida_descripcion">Crea peticiones, vota por causas y haz que tu universidad escuche.</string>
     <string name="bienvenida_version">v1.0 — Taller de Programación Móvil</string>
 
+    <!-- ===== PANTALLA LOGIN ===== -->
+    <string name="login_titulo">Iniciar sesión</string>
+    <string name="login_subtitulo">Ingresa con tu correo institucional UNTELS</string>
+    <string name="login_label_correo">Correo institucional</string>
+    <string name="login_hint_correo">tucorreo@untels.edu.pe</string>
+    <string name="login_label_password">Contraseña</string>
+    <string name="login_hint_password">Tu contraseña</string>
+    <string name="login_boton_ingresar">Ingresar</string>
+    <string name="login_boton_crear_cuenta">Crear cuenta</string>
+    <string name="login_error_campos_vacios">Por favor completa todos los campos</string>
+    <string name="login_error_correo_invalido">Usa tu correo institucional @untels.edu.pe</string>
+    <string name="login_bienvenido">Bienvenido</string>
+    <string name="login_ir_registro">Próximamente: pantalla de registro</string>
+
 </resources>

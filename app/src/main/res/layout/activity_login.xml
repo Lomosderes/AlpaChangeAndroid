@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla de inicio de sesión de AlpaChange -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo_principal"
+    android:padding="@dimen/pantalla_padding"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/login_titulo"
+        android:textColor="@color/texto_acento"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_s"
+        android:gravity="center"
+        android:text="@string/login_subtitulo"
+        android:textColor="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_xl"
+        android:text="@string/login_label_correo"
+        android:textColor="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <EditText
+        android:id="@+id/input_correo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_xs"
+        android:hint="@string/login_hint_correo"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/texto_claro"
+        android:textColorHint="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_m"
+        android:text="@string/login_label_password"
+        android:textColor="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <EditText
+        android:id="@+id/input_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_xs"
+        android:hint="@string/login_hint_password"
+        android:inputType="textPassword"
+        android:textColor="@color/texto_claro"
+        android:textColorHint="@color/texto_claro"
+        android:textSize="@dimen/texto_normal" />
+
+    <Button
+        android:id="@+id/boton_ingresar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_xl"
+        android:backgroundTint="@color/boton_primario"
+        android:text="@string/login_boton_ingresar"
+        android:textColor="@color/boton_texto"
+        android:textSize="@dimen/texto_normal" />
+
+    <Button
+        android:id="@+id/boton_crear_cuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_s"
+        android:backgroundTint="@color/boton_secundario"
+        android:text="@string/login_boton_crear_cuenta"
+        android:textColor="@color/boton_texto"
+        android:textSize="@dimen/texto_normal" />
+
+</LinearLayout>
