@@ -54,7 +54,17 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
-        // Validación 2: correo institucional UNTELS
+        // Validación 2: longitud máxima razonable para evitar entradas abusivas
+        if (correo.length > 100 || password.length > 64) {
+            Toast.makeText(
+                this,
+                getString(R.string.login_error_campos_vacios),
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        // Validación 3: correo institucional UNTELS
         if (!correo.endsWith("@untels.edu.pe")) {
             Toast.makeText(
                 this,

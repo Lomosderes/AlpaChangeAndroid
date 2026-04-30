@@ -24,8 +24,15 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         textCorreoUsuario = findViewById(R.id.text_correo_usuario)
         botonVerDocentes = findViewById(R.id.boton_ver_docentes)
 
-        // Recuperar el correo enviado desde LoginActivity con putExtra
-        val correo = intent.getStringExtra(getString(R.string.extra_correo)) ?: ""
+        // Recuperar el correo enviado desde LoginActivity con putExtra.
+        // Si por alguna razón no llega el extra, mostramos aviso y volvemos al login
+        // en lugar de continuar con un valor vacío que confunda al usuario.
+        val correo = intent.getStringExtra(getString(R.string.extra_correo))
+        if (correo.isNullOrBlank()) {
+            Toast.makeText(this, getString(R.string.login_error_campos_vacios), Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
         textCorreoUsuario.text = correo
 
         // Manejo centralizado de clics

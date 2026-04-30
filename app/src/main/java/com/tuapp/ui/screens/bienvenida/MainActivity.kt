@@ -14,14 +14,23 @@ class MainActivity : AppCompatActivity() {
     // Tiempo de espera del splash en milisegundos
     private val tiempoSplashMs: Long = 2500
 
+    private val handlerSplash = Handler(Looper.getMainLooper())
+    private val tareaIrALogin = Runnable {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish() // evita que el usuario vuelva al splash con el botón Atrás
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Splash temporizado: tras unos segundos, navegar a LoginActivity con Intent explícito
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish() // evita que el usuario vuelva al splash con el botón Atrás
-        }, tiempoSplashMs)
+        handlerSplash.postDelayed(tareaIrALogin, tiempoSplashMs)
+    }
+
+    override fun onDestroy() {
+        // Evita memory leak si la Activity es destruida antes de que dispare la navegación
+        handlerSplash.removeCallbacks(tareaIrALogin)
+        super.onDestroy()
     }
 }
