@@ -6,6 +6,7 @@
     <color name="brand_azul_marino">#102636</color>
     <color name="brand_naranja">#ea6119</color>
     <color name="brand_turquesa">#0eba95</color>
+    <color name="fondo_tarjeta">#1a3a52</color>
 
     <!-- ===== COLORES DE FONDO ===== -->
     <color name="fondo_principal">#102636</color>

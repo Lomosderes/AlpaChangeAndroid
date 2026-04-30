@@ -23,6 +23,12 @@
         <activity
             android:name=".ui.screens.login.LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.screens.home.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.profesores.ListaProfesoresActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

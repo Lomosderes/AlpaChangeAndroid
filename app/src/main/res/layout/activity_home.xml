@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pantalla principal (Home) de AlpaChange con peticiones destacadas -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_principal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pantalla_padding">
+
+        <!-- Saludo personalizado -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_saludo"
+            android:textColor="@color/texto_claro"
+            android:textSize="@dimen/texto_normal" />
+
+        <TextView
+            android:id="@+id/text_correo_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto_acento"
+            android:textSize="@dimen/texto_grande"
+            android:textStyle="bold" />
+
+        <!-- Sección: Peticiones destacadas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_xl"
+            android:text="@string/home_titulo_seccion_peticiones"
+            android:textColor="@color/texto_claro"
+            android:textSize="@dimen/texto_grande"
+            android:textStyle="bold" />
+
+        <!-- Tarjeta de petición 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_m"
+            android:background="@color/fondo_tarjeta"
+            android:orientation="vertical"
+            android:padding="@dimen/espacio_m">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peticion_1_titulo"
+                android:textColor="@color/texto_acento"
+                android:textSize="@dimen/texto_normal"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_s"
+                android:text="@string/peticion_1_descripcion"
+                android:textColor="@color/texto_claro"
+                android:textSize="@dimen/texto_pequeno" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_s"
+                android:text="@string/peticion_1_firmas"
+                android:textColor="@color/brand_turquesa"
+                android:textSize="@dimen/texto_pequeno"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Tarjeta de petición 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_m"
+            android:background="@color/fondo_tarjeta"
+            android:orientation="vertical"
+            android:padding="@dimen/espacio_m">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peticion_2_titulo"
+                android:textColor="@color/texto_acento"
+                android:textSize="@dimen/texto_normal"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_s"
+                android:text="@string/peticion_2_descripcion"
+                android:textColor="@color/texto_claro"
+                android:textSize="@dimen/texto_pequeno" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_s"
+                android:text="@string/peticion_2_firmas"
+                android:textColor="@color/brand_turquesa"
+                android:textSize="@dimen/texto_pequeno"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Sección: Docentes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_xl"
+            android:text="@string/home_titulo_seccion_docentes"
+            android:textColor="@color/texto_claro"
+            android:textSize="@dimen/texto_grande"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_s"
+            android:text="@string/home_docentes_descripcion"
+            android:textColor="@color/texto_claro"
+            android:textSize="@dimen/texto_pequeno" />
+
+        <Button
+            android:id="@+id/boton_ver_docentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_m"
+            android:layout_marginBottom="@dimen/espacio_xl"
+            android:backgroundTint="@color/boton_secundario"
+            android:text="@string/home_boton_ver_docentes"
+            android:textColor="@color/boton_texto"
+            android:textSize="@dimen/texto_normal" />
+
+    </LinearLayout>
+</ScrollView>

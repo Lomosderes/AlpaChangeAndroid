@@ -24,4 +24,31 @@
     <string name="login_bienvenido">Bienvenido</string>
     <string name="login_ir_registro">Próximamente: pantalla de registro</string>
 
+    <!-- ===== PANTALLA HOME ===== -->
+    <string name="home_saludo">Hola,</string>
+    <string name="home_titulo_seccion_peticiones">Peticiones destacadas</string>
+    <string name="home_titulo_seccion_docentes">¿Conoces a tus docentes?</string>
+    <string name="home_docentes_descripcion">Revisa el perfil de los docentes destacados de la UNTELS.</string>
+    <string name="home_boton_ver_docentes">Ver docentes destacados</string>
+
+    <!-- ===== PETICIONES (HARDCODED) ===== -->
+    <string name="peticion_1_titulo">Mejores horarios para laboratorios</string>
+    <string name="peticion_1_descripcion">Solicitamos ampliar los horarios de los laboratorios de Ingeniería los fines de semana.</string>
+    <string name="peticion_1_firmas">247 firmas</string>
+
+    <string name="peticion_2_titulo">Más áreas verdes en el campus</string>
+    <string name="peticion_2_descripcion">Pedimos a las autoridades destinar espacios verdes y zonas de descanso para los estudiantes.</string>
+    <string name="peticion_2_firmas">412 firmas</string>
+
+    <!-- ===== INTENT EXTRAS (claves) ===== -->
+    <string name="extra_correo">correo</string>
+
+    <!-- ===== PANTALLA LISTA DE PROFESORES ===== -->
+    <string name="lista_profesores_titulo">Docentes destacados</string>
+    <string name="lista_profesores_subtitulo">Toca un docente para ver más detalles</string>
+    <string name="lista_profesores_seleccionado">Seleccionaste:</string>
+
+    <!-- ===== INTENT EXTRAS (claves) ===== -->
+    <string name="extra_profesor">profesor</string>
+
 </resources>

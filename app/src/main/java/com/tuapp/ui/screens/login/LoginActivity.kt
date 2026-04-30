@@ -1,6 +1,7 @@
 // Pantalla de inicio de sesión de AlpaChange
 package com.tuapp.ui.screens.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.tuapp.R
+import com.tuapp.ui.screens.home.HomeActivity
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -69,11 +71,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             Toast.LENGTH_SHORT
         ).show()
 
-        // TODO [Siguiente pantalla]: Navegar a HomeActivity con Intent explícito
-        //  cuando construyamos la pantalla Home (lista de peticiones).
-        // val intent = Intent(this, HomeActivity::class.java)
-        // intent.putExtra("correo", correo)
-        // startActivity(intent)
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(getString(R.string.extra_correo), correo)
+        startActivity(intent)
+        finish() // evita volver al login con el botón Atrás
     }
 
     private fun irARegistro() {
