@@ -1,59 +1,63 @@
-// Pantalla con la lista de docentes destacados de AlpaChange
+// Activity que visualiza el directorio de profesores de la UNTELS.
 package com.tuapp.ui.screens.profesores
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tuapp.R
+import com.tuapp.ui.components.ProfessorAdapter
 
 class ListaProfesoresActivity : AppCompatActivity() {
 
-    private lateinit var listView: ListView
-
-    // Lista estática de docentes (Sección 6, Regla 5: datos como List<String> en la Activity
-    // mientras no se hayan visto Repository / BD / API en clase)
-    private val profesores = listOf(
-        "Dr. Juan Pérez — Ingeniería de Sistemas",
-        "Dra. María López — Electrónica y Telecomunicaciones",
-        "Mg. Carlos Ramírez — Mecatrónica",
-        "Lic. Ana Torres — Matemática",
-        "Dr. Luis Salazar — Ingeniería Industrial",
-        "Mg. Patricia Quispe — Administración",
-        "Dr. Roberto Fernández — Ciencias de la Computación",
-        "Mg. Jorge Mendoza — Física Aplicada"
-    )
+    private val viewModel: ListaProfesoresViewModel by viewModels()
+    private lateinit var adapter: ProfessorAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_profesores)
 
-        listView = findViewById(R.id.list_profesores)
+        setupRecyclerView()
+        setupSearch()
+        observeViewModel()
 
-        // Adaptador con layout de ítem personalizado (Clase 4)
-        val adapter = ArrayAdapter(
-            this,
-            R.layout.item_profesor,
-            R.id.text_profesor,
-            profesores
-        )
-        listView.adapter = adapter
+        viewModel.loadProfessors()
+    }
 
-        // Click en un ítem de la lista
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val profesorSeleccionado = profesores[position]
-            Toast.makeText(
-                this,
-                getString(R.string.lista_profesores_seleccionado) + " " + profesorSeleccionado,
-                Toast.LENGTH_SHORT
-            ).show()
+    /**
+     * Inicializa el RecyclerView con el adaptador de profesores.
+     */
+    private fun setupRecyclerView() {
+        val rvProfessors = findViewById<RecyclerView>(R.id.rvProfessors)
+        adapter = ProfessorAdapter(emptyList())
+        rvProfessors.layoutManager = LinearLayoutManager(this)
+        rvProfessors.adapter = adapter
+    }
 
-            // TODO [Siguiente pantalla]: Navegar a DetalleProfesorActivity con Intent explícito
-            //  pasando el dato con putExtra cuando construyamos la pantalla de detalle.
-            // val intent = Intent(this, DetalleProfesorActivity::class.java)
-            // intent.putExtra(getString(R.string.extra_profesor), profesorSeleccionado)
-            // startActivity(intent)
+    /**
+     * Configura la lógica de búsqueda en tiempo real mediante el EditText.
+     */
+    private fun setupSearch() {
+        val etSearch = findViewById<EditText>(R.id.etSearchProfessor)
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.filterProfessors(s.toString())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    /**
+     * Suscribe la UI a los cambios en el listado de profesores del ViewModel.
+     */
+    private fun observeViewModel() {
+        viewModel.professors.observe(this) { professors ->
+            adapter.updateData(professors)
         }
     }
 }

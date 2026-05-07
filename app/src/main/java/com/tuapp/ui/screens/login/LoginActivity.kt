@@ -1,101 +1,79 @@
-// Pantalla de inicio de sesión de AlpaChange
+// Activity que gestiona la interacción del usuario con la pantalla de login.
 package com.tuapp.ui.screens.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.tuapp.R
 import com.tuapp.ui.screens.home.HomeActivity
+import com.tuapp.ui.screens.registro.RegistroActivity
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
 
-    private lateinit var inputCorreo: EditText
-    private lateinit var inputPassword: EditText
-    private lateinit var botonIngresar: Button
-    private lateinit var botonCrearCuenta: Button
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Vincular vistas del layout
-        inputCorreo = findViewById(R.id.input_correo)
-        inputPassword = findViewById(R.id.input_password)
-        botonIngresar = findViewById(R.id.boton_ingresar)
-        botonCrearCuenta = findViewById(R.id.boton_crear_cuenta)
-
-        // Manejo centralizado de clics (Clase 4)
-        botonIngresar.setOnClickListener(this)
-        botonCrearCuenta.setOnClickListener(this)
+        setupListeners()
+        observeViewModel()
     }
 
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.boton_ingresar -> intentarIngresar()
-            R.id.boton_crear_cuenta -> irARegistro()
+    /**
+     * Configura los eventos de clic de los botones de la pantalla.
+     */
+    private fun setupListeners() {
+        val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val btnRegister = findViewById<Button>(R.id.btnRegister)
+
+        btnLogin.setOnClickListener {
+            val email = etEmail.text.toString()
+            val password = etPassword.text.toString()
+            viewModel.attemptLogin(email, password)
+        }
+
+        btnRegister.setOnClickListener {
+            startActivity(Intent(this, RegistroActivity::class.java))
         }
     }
 
-    private fun intentarIngresar() {
-        val correo = inputCorreo.text.toString().trim()
-        val password = inputPassword.text.toString().trim()
-
-        // Validación 1: campos vacíos
-        if (correo.isEmpty() || password.isEmpty()) {
-            Toast.makeText(
-                this,
-                getString(R.string.login_error_campos_vacios),
-                Toast.LENGTH_SHORT
-            ).show()
-            return
+    /**
+     * Suscribe la vista a los cambios de estado en el ViewModel.
+     */
+    private fun observeViewModel() {
+        viewModel.loginState.observe(this) { state ->
+            when (state) {
+                is LoginState.Success -> {
+                    Toast.makeText(this, getString(R.string.login_welcome), Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                }
+                is LoginState.Error -> {
+                    handleError(state.code)
+                }
+                is LoginState.Loading -> {
+                    // Implementar spinner si es necesario
+                }
+            }
         }
-
-        // Validación 2: longitud máxima razonable para evitar entradas abusivas
-        if (correo.length > 100 || password.length > 64) {
-            Toast.makeText(
-                this,
-                getString(R.string.login_error_campos_vacios),
-                Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
-
-        // Validación 3: correo institucional UNTELS
-        if (!correo.endsWith("@untels.edu.pe")) {
-            Toast.makeText(
-                this,
-                getString(R.string.login_error_correo_invalido),
-                Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
-
-        // Validaciones OK
-        Toast.makeText(
-            this,
-            getString(R.string.login_bienvenido) + ", " + correo,
-            Toast.LENGTH_SHORT
-        ).show()
-
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra(getString(R.string.extra_correo), correo)
-        startActivity(intent)
-        finish() // evita volver al login con el botón Atrás
     }
 
-    private fun irARegistro() {
-        Toast.makeText(
-            this,
-            getString(R.string.login_ir_registro),
-            Toast.LENGTH_SHORT
-        ).show()
-
-        // TODO [Siguiente pantalla]: Navegar a RegistroActivity con Intent explícito
-        //  cuando construyamos la pantalla de Registro.
-        // startActivity(Intent(this, RegistroActivity::class.java))
+    /**
+     * Gestiona la visualización de errores según el código recibido del ViewModel.
+     */
+    private fun handleError(code: String) {
+        val message = when (code) {
+            "CAMPOS_VACIOS" -> getString(R.string.login_error_empty)
+            "CORREO_INVALIDO" -> getString(R.string.login_error_invalid_email)
+            else -> "Error desconocido"
+        }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }

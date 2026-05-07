@@ -1,4 +1,4 @@
-<!-- Layout de la pantalla de inicio de sesión siguiendo reglas de diseño estandarizadas -->
+<!-- Layout de la pantalla de registro de usuario -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,29 +10,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_title"
+        android:text="@string/register_title"
         android:textColor="@color/button_primary"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        android:text="@string/login_subtitle"
+        android:text="@string/register_subtitle"
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/text_size_body" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_label_email"
+            android:text="@string/register_label_email"
             android:textColor="@color/text_primary"
             android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="@string/login_label_password"
+            android:text="@string/register_label_password"
             android:textColor="@color/text_primary"
             android:textStyle="bold" />
 
@@ -62,24 +62,32 @@
             android:textColor="@color/text_primary"
             android:textSize="@dimen/text_size_body" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/register_label_confirm_password"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_label_confirm_password"
+            android:inputType="textPassword"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_body" />
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/button_primary"
-        android:text="@string/login_btn_enter"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:backgroundTint="@color/button_secondary"
-        android:text="@string/login_btn_register"
+        android:text="@string/register_btn_signup"
         android:textColor="@color/white" />
 
 </LinearLayout>

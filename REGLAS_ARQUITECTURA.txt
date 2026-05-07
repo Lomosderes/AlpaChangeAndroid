@@ -1,0 +1,87 @@
+Vas a generar el código de una aplicación Android siguiendo ESTRICTAMENTE 
+la siguiente arquitectura de carpetas. Esta estructura fue diseñada para que 
+cualquier miembro del equipo, independientemente de su nivel, pueda ubicar 
+cualquier componente de forma intuitiva.
+
+======================================================
+ARQUITECTURA OBLIGATORIA
+======================================================
+
+app/src/main/
+├── java/com/tuapp/
+│   ├── ui/
+│   │   ├── screens/
+│   │   │   └── <pantalla>/
+│   │   │       ├── <Pantalla>Activity.kt
+│   │   │       └── <Pantalla>ViewModel.kt
+│   │   └── components/
+│   │       └── (componentes visuales reutilizables)
+│   ├── data/
+│   │   ├── model/         → Clases de datos (data classes)
+│   │   ├── repository/    → Quien obtiene y provee los datos
+│   │   └── network/       → Configuración de API / Retrofit
+│   └── utils/
+│       ├── Constants.kt   → Valores fijos de la app
+│       ├── Extensions.kt  → Funciones de extensión de Kotlin
+│       └── Helpers.kt     → Funciones auxiliares generales
+│
+└── res/
+    ├── layout/            → Archivos XML de diseño de pantallas
+    ├── values/
+    │   ├── colors.xml     → ÚNICO lugar donde se definen colores
+    │   ├── strings.xml    → ÚNICO lugar donde se definen textos
+    │   ├── themes.xml     → Estilos y temas globales
+    │   └── dimens.xml     → Tamaños, márgenes y paddings
+    ├── drawable/          → Íconos, imágenes y formas vectoriales
+    ├── font/              → Fuentes tipográficas
+    └── mipmap/            → Ícono de la aplicación
+
+======================================================
+REGLAS ESTRICTAS QUE DEBES SEGUIR
+======================================================
+
+1. COLORES
+   - Ningún color se escribe directo en el XML o en código Kotlin.
+   - Todo color debe estar definido en res/values/colors.xml
+   - Se referencia siempre como @color/nombre_color en XML
+     o ContextCompat.getColor(context, R.color.nombre_color) en Kotlin.
+
+2. TEXTOS
+   - Ningún texto visible al usuario se escribe hardcodeado.
+   - Todo texto debe estar en res/values/strings.xml
+   - Se referencia como @string/nombre en XML
+     o getString(R.string.nombre) en Kotlin.
+
+3. TAMAÑOS
+   - Márgenes, paddings y tamaños de fuente van en res/values/dimens.xml
+   - Se referencian como @dimen/nombre en XML.
+
+4. LAYOUTS
+   - Cada pantalla tiene su propio archivo XML en res/layout/
+   - Convención de nombres:
+       activity_<nombre>.xml  → para Activities
+       fragment_<nombre>.xml  → para Fragments
+       item_<nombre>.xml      → para ítems de listas
+       dialog_<nombre>.xml    → para diálogos
+
+5. LÓGICA Y VISTAS
+   - La Activity solo maneja eventos de UI (clics, navegación).
+   - El ViewModel contiene la lógica de negocio y el estado.
+   - Los datos se obtienen siempre a través del Repository.
+
+6. COMENTARIOS
+   - Cada archivo debe tener un comentario al inicio explicando 
+     su propósito en una línea.
+   - En colors.xml agrupar los colores por sección con comentarios:
+       <!-- ===== COLORES DE BOTONES ===== -->
+       <!-- ===== COLORES DE TEXTO ===== -->
+       <!-- ===== COLORES DE FONDO ===== -->
+
+======================================================
+CUANDO GENERES CÓDIGO, SIEMPRE INDICA:
+======================================================
+
+- La ruta exacta del archivo (ejemplo: res/values/colors.xml)
+- El nombre del archivo
+- El contenido completo del archivo
+- Una línea al final indicando qué otros archivos impacta ese cambio

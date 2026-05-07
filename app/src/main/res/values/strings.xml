@@ -1,54 +1,36 @@
-<!-- Textos visibles de AlpaChange -->
 <resources>
-
-    <!-- ===== APP ===== -->
     <string name="app_name">AlpaChange</string>
+    <string name="title_home">Peticiones Estudiantiles</string>
+    <string name="label_votes">%1$d votos</string>
+    <string name="label_author">Por: %1$s</string>
+    <string name="label_category">Categoría: %1$s</string>
 
-    <!-- ===== PANTALLA BIENVENIDA ===== -->
-    <string name="bienvenida_titulo">AlpaChange</string>
-    <string name="bienvenida_subtitulo">La voz de los estudiantes UNTELS</string>
-    <string name="bienvenida_descripcion">Crea peticiones, vota por causas y haz que tu universidad escuche.</string>
-    <string name="bienvenida_version">v1.0 — Taller de Programación Móvil</string>
-
-    <!-- ===== PANTALLA LOGIN ===== -->
-    <string name="login_titulo">Iniciar sesión</string>
-    <string name="login_subtitulo">Ingresa con tu correo institucional UNTELS</string>
-    <string name="login_label_correo">Correo institucional</string>
-    <string name="login_hint_correo">tucorreo@untels.edu.pe</string>
+    <!-- ===== LOGIN ===== -->
+    <string name="login_title">AlpaChange</string>
+    <string name="login_subtitle">La voz de la UNTELS</string>
+    <string name="login_label_email">Correo Institucional</string>
+    <string name="login_hint_email">10 dígitos@untels.edu.pe</string>
     <string name="login_label_password">Contraseña</string>
     <string name="login_hint_password">Tu contraseña</string>
-    <string name="login_boton_ingresar">Ingresar</string>
-    <string name="login_boton_crear_cuenta">Crear cuenta</string>
-    <string name="login_error_campos_vacios">Por favor completa todos los campos</string>
-    <string name="login_error_correo_invalido">Usa tu correo institucional @untels.edu.pe</string>
-    <string name="login_bienvenido">Bienvenido</string>
-    <string name="login_ir_registro">Próximamente: pantalla de registro</string>
+    <string name="login_btn_enter">Ingresar</string>
+    <string name="login_btn_register">Crear Cuenta</string>
+    <string name="login_error_empty">Por favor, completa todos los campos</string>
+    <string name="login_error_invalid_email">Formato de correo inválido (deben ser 10 dígitos)</string>
+    <string name="login_welcome">Bienvenido a AlpaChange</string>
 
-    <!-- ===== PANTALLA HOME ===== -->
-    <string name="home_saludo">Hola,</string>
-    <string name="home_titulo_seccion_peticiones">Peticiones destacadas</string>
-    <string name="home_titulo_seccion_docentes">¿Conoces a tus docentes?</string>
-    <string name="home_docentes_descripcion">Revisa el perfil de los docentes destacados de la UNTELS.</string>
-    <string name="home_boton_ver_docentes">Ver docentes destacados</string>
+    <!-- ===== REGISTRO ===== -->
+    <string name="register_title">Crear Cuenta</string>
+    <string name="register_subtitle">Únete a la comunidad UNTELS</string>
+    <string name="register_label_email">Correo Institucional</string>
+    <string name="register_label_password">Contraseña</string>
+    <string name="register_label_confirm_password">Confirmar Contraseña</string>
+    <string name="register_btn_signup">Registrarse</string>
+    <string name="register_error_passwords_dont_match">Las contraseñas no coinciden</string>
+    <string name="register_success">Registro exitoso. Revisa tu correo.</string>
 
-    <!-- ===== PETICIONES (HARDCODED) ===== -->
-    <string name="peticion_1_titulo">Mejores horarios para laboratorios</string>
-    <string name="peticion_1_descripcion">Solicitamos ampliar los horarios de los laboratorios de Ingeniería los fines de semana.</string>
-    <string name="peticion_1_firmas">247 firmas</string>
-
-    <string name="peticion_2_titulo">Más áreas verdes en el campus</string>
-    <string name="peticion_2_descripcion">Pedimos a las autoridades destinar espacios verdes y zonas de descanso para los estudiantes.</string>
-    <string name="peticion_2_firmas">412 firmas</string>
-
-    <!-- ===== INTENT EXTRAS (claves) ===== -->
-    <string name="extra_correo">correo</string>
-
-    <!-- ===== PANTALLA LISTA DE PROFESORES ===== -->
-    <string name="lista_profesores_titulo">Docentes destacados</string>
-    <string name="lista_profesores_subtitulo">Toca un docente para ver más detalles</string>
-    <string name="lista_profesores_seleccionado">Seleccionaste:</string>
-
-    <!-- ===== INTENT EXTRAS (claves) ===== -->
-    <string name="extra_profesor">profesor</string>
-
+    <!-- ===== PROFESORES ===== -->
+    <string name="title_professors">Directorio de Docentes</string>
+    <string name="label_rating">Calificación: %1$.1f</string>
+    <string name="label_reviews">%1$d reseñas</string>
+    <string name="hint_search_professor">Buscar por nombre...</string>
 </resources>

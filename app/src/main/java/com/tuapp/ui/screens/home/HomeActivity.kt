@@ -1,51 +1,45 @@
-// Pantalla principal (Home) de AlpaChange con peticiones destacadas
+// Activity que gestiona la vista de la lista de peticiones (Home).
 package com.tuapp.ui.screens.home
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tuapp.R
-import com.tuapp.ui.screens.profesores.ListaProfesoresActivity
+import com.tuapp.ui.components.PetitionAdapter
 
-class HomeActivity : AppCompatActivity(), View.OnClickListener {
+class HomeActivity : AppCompatActivity() {
 
-    private lateinit var textCorreoUsuario: TextView
-    private lateinit var botonVerDocentes: Button
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var adapter: PetitionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Vincular vistas
-        textCorreoUsuario = findViewById(R.id.text_correo_usuario)
-        botonVerDocentes = findViewById(R.id.boton_ver_docentes)
+        setupRecyclerView()
+        observeViewModel()
 
-        // Recuperar el correo enviado desde LoginActivity con putExtra.
-        // Si por alguna razón no llega el extra, mostramos aviso y volvemos al login
-        // en lugar de continuar con un valor vacío que confunda al usuario.
-        val correo = intent.getStringExtra(getString(R.string.extra_correo))
-        if (correo.isNullOrBlank()) {
-            Toast.makeText(this, getString(R.string.login_error_campos_vacios), Toast.LENGTH_SHORT).show()
-            finish()
-            return
-        }
-        textCorreoUsuario.text = correo
-
-        // Manejo centralizado de clics
-        botonVerDocentes.setOnClickListener(this)
+        viewModel.loadPetitions()
     }
 
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.boton_ver_docentes -> irAListaDocentes()
-        }
+    /**
+     * Configura el RecyclerView con su LayoutManager y el adaptador de peticiones.
+     */
+    private fun setupRecyclerView() {
+        val rvPetitions = findViewById<RecyclerView>(R.id.rvPetitions)
+        adapter = PetitionAdapter(emptyList())
+        rvPetitions.layoutManager = LinearLayoutManager(this)
+        rvPetitions.adapter = adapter
     }
 
-    private fun irAListaDocentes() {
-        startActivity(Intent(this, ListaProfesoresActivity::class.java))
+    /**
+     * Suscribe la vista a los cambios en el LiveData del ViewModel para actualizar la lista.
+     */
+    private fun observeViewModel() {
+        viewModel.petitions.observe(this) { petitions ->
+            adapter.updateData(petitions)
+        }
     }
 }

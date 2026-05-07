@@ -1,0 +1,204 @@
+## Descripción General
+
+**AlpaChange** es una plataforma universitaria inspirada en Change.org, diseñada exclusivamente para estudiantes de la **UNTELS** (Universidad Nacional Tecnológica de Lima Sur). Su propósito es dar voz a los estudiantes ante las autoridades universitarias, permitiéndoles crear peticiones colectivas, apoyar causas, evaluar docentes y reportar contenido inapropiado.
+
+---
+
+## Roles de Usuario
+
+| Rol | Descripción |
+|---|---|
+| **Visitante** | Puede ver la lista y detalle de peticiones y la lista de profesores. No puede votar, comentar ni crear. |
+| **Estudiante verificado** | Usuario registrado y verificado. Puede crear peticiones, votar, comentar, evaluar profesores y denunciar contenido. |
+| **Administrador / Staff** | Modera denuncias, agrega seguimientos a peticiones, puede archivar contenido reportado y enviar notificaciones. |
+
+---
+
+## Módulo 1 — Cuentas y Autenticación
+
+### Registro
+- Solo se aceptan correos institucionales con formato `NNNNNNNNNN@untels.edu.pe` (10 dígitos numéricos antes del `@`).
+- El código de estudiante (10 dígitos) se extrae automáticamente del correo.
+- El usuario ingresa: correo, contraseña y confirmación de contraseña.
+- Al registrarse, la cuenta queda **inactiva** hasta que el usuario verifique su correo.
+- Se envía un correo con un **código de verificación** único.
+- No pueden existir dos cuentas con el mismo código de estudiante ni con el mismo correo.
+
+### Verificación de correo
+- El usuario ingresa el código recibido por correo.
+- Si el código es correcto, la cuenta se activa y el perfil queda marcado como **verificado**.
+- Sin verificación, el usuario puede iniciar sesión pero no puede crear peticiones, votar ni comentar.
+
+### Inicio de sesión
+- El usuario ingresa con su **correo institucional** y contraseña.
+- Si el correo o la contraseña son incorrectos, se muestra un mensaje de error específico.
+- Al ingresar con éxito, se redirige a la lista de peticiones.
+
+### Cierre de sesión
+- El usuario puede cerrar sesión en cualquier momento.
+- Se redirige a la lista de peticiones.
+
+### Perfil público
+- Cada usuario tiene un perfil público visible para otros.
+- Muestra: alias, comentarios del usuario y, si el usuario lo permite, sus peticiones.
+- El usuario puede elegir **no mostrar su nombre real** en el perfil público.
+
+### Edición de perfil
+- El usuario puede configurar:
+  - Nombre y apellido (nombre real, no público por defecto)
+  - **Alias** (seudónimo que aparece en comentarios y peticiones, mínimo 3 caracteres)
+  - Si se muestra el nombre real en el perfil
+  - Si se muestran sus peticiones en su perfil público
+
+---
+
+## Módulo 2 — Peticiones
+
+### Lista de peticiones (pantalla principal / Home)
+- Muestra todas las peticiones **activas**, ordenadas por número de votos (mayor a menor) y luego por fecha de creación.
+- Cada petición en la lista muestra: título, número de votos, tiempo restante (cuenta regresiva).
+- Estadísticas globales visibles en la cabecera:
+  - Total de votos recibidos en las últimas 24 horas.
+  - Total de peticiones resueltas/archivadas históricamente.
+  - Total de profesores que han sido evaluados.
+
+### Crear petición
+- Solo disponible para **usuarios verificados**.
+- El usuario debe completar:
+  - **Título** (máximo 200 caracteres)
+  - **Descripción** (texto libre)
+  - **Categoría** (selección de lista predefinida, opcional)
+- El título y la descripción pasan por un **filtro de lenguaje inapropiado** (palabras ofensivas); si se detecta, se rechaza el envío.
+- Al crearse, la petición queda activa inmediatamente.
+
+### Detalle de una petición
+- Muestra: título, descripción, autor (por alias), fecha de creación, categoría, número de votos, tiempo restante.
+- Si la petición ya fue resuelta/archivada por el staff, puede mostrar **notas de seguimiento** y/o un **documento PDF adjunto** con el avance institucional.
+- Los usuarios autenticados pueden ver el formulario de comentarios.
+- Cualquier visitante puede leer los comentarios existentes.
+
+### Votar (apoyar) una petición
+- Solo **usuarios verificados** pueden votar.
+- El voto es **alternado**: si ya votaste, puedes retirar tu voto con el mismo botón; si no has votado, lo agregas.
+- Cada usuario puede votar una sola vez por petición.
+- El conteo de votos se actualiza en tiempo real (respuesta inmediata sin recargar la página).
+
+### Ciclo de vida de una petición (archivado automático)
+- Las peticiones tienen una **fecha de expiración inicial de 8 días** desde su creación.
+- A partir del día 8, entran en **modo extensión**: cada 24 horas se evalúa si la petición sigue "activa" o debe archivarse.
+- **Regla de archivado**: si en un periodo de 24 horas se reciben menos del **10% de los votos** que se recibieron en el periodo anterior, la petición se archiva automáticamente.
+- Las peticiones archivadas dejan de recibir votos y comentarios, pero siguen siendo visibles.
+
+### Comentar en una petición
+- Solo **usuarios verificados** pueden comentar.
+- Solo se puede comentar en peticiones **activas**.
+- El usuario escribe el comentario usando su **alias**. Si no tiene alias configurado, se le pide que elija uno antes de comentar (ese alias queda guardado en su perfil para futuras interacciones).
+- El contenido del comentario pasa por el **filtro de lenguaje inapropiado**.
+- Los comentarios se identifican por alias, no por nombre real.
+
+### Mis peticiones (Dashboard)
+- El usuario autenticado puede ver sus propias peticiones divididas en dos grupos:
+  - **Activas**: con cuenta regresiva de tiempo restante, votos totales y crecimiento de votos en las últimas 24 horas.
+  - **Archivadas**: con historial de votos y crecimiento en las últimas 24 horas.
+
+---
+
+## Módulo 3 — Denuncias y Moderación
+
+### Denunciar contenido (usuarios)
+- Cualquier **usuario autenticado** puede denunciar:
+  - Una **petición** completa.
+  - Un **comentario** específico.
+- El usuario debe escribir una **razón** para la denuncia.
+- La denuncia se envía al equipo de moderación para revisión.
+
+### Mis denuncias
+- El usuario puede consultar el historial de sus propias denuncias y ver si han sido revisadas o resueltas.
+
+### Notificaciones
+- Cuando el staff resuelve una denuncia, el denunciante recibe una **notificación en la plataforma** con un mensaje de resolución.
+- El usuario puede ver todas sus notificaciones ordenadas por fecha.
+- Al abrir la sección de notificaciones, las no leídas quedan marcadas como leídas.
+
+### Panel de moderación (solo Staff)
+- Lista todas las denuncias **pendientes de revisión**, ordenadas por fecha de creación (más recientes primero).
+- Por cada denuncia, el staff puede:
+  1. **Resolver sin eliminar**: marcar la denuncia como revisada y enviar un mensaje al denunciante.
+  2. **Eliminar el contenido**: archivar la petición o ocultar el comentario, marcar la denuncia como resuelta y enviar un mensaje al denunciante.
+
+### Seguimiento de peticiones (solo Staff)
+- El staff puede agregar a cualquier petición:
+  - **Notas de seguimiento** (texto libre explicando el avance institucional).
+  - Un **archivo PDF** adjunto (por ejemplo, respuesta oficial de la universidad).
+- Estos datos son visibles para todos los usuarios en el detalle de la petición.
+
+---
+
+## Módulo 4 — Evaluación de Docentes
+
+### Lista de profesores
+- Cualquier visitante puede ver la lista de profesores.
+- Filtros disponibles:
+  - **Búsqueda por nombre** (primer nombre o apellido).
+  - **Filtro por departamento/área**.
+  - **Ordenamiento**: por calificación promedio (por defecto) o por nombre alfabético.
+- Cada profesor muestra: nombre completo, departamento, calificación promedio general y número de reseñas.
+
+### Detalle de un profesor
+- Muestra el perfil del profesor con:
+  - Calificación promedio general.
+  - Promedio desglosado por cada una de las 4 categorías: Enseñanza, Puntualidad, Respeto, Conocimiento.
+  - Todas las reseñas publicadas, ordenadas de la más reciente a la más antigua.
+- Desde esta pantalla, usuarios autenticados pueden agregar una reseña.
+
+### Escribir una reseña de un profesor
+- Solo **usuarios autenticados** pueden escribir reseñas.
+- El usuario selecciona el **curso** en el que tuvo al profesor.
+- Califica al profesor en **4 categorías**, cada una con escala del **1 al 5**:
+  1. **Enseñanza** — calidad pedagógica.
+  2. **Puntualidad** — cumplimiento de horarios.
+  3. **Respeto** — trato hacia los estudiantes.
+  4. **Conocimiento** — dominio de la materia.
+- Agrega un **comentario** escrito libre.
+- Puede elegir publicar la reseña de forma **anónima** o con su nombre.
+- **Restricción**: un usuario solo puede calificar a un mismo profesor en el mismo curso **una vez** (no se permiten reseñas duplicadas).
+
+### Ranking de profesores
+- Existe un componente de **ranking en barra lateral** que muestra a los profesores mejor calificados.
+
+---
+
+## Reglas de Negocio Clave (Resumen)
+
+| Regla | Descripción |
+|---|---|
+| Correo exclusivo UNTELS | Solo `@untels.edu.pe` con código de 10 dígitos |
+| Verificación obligatoria | Sin verificar: solo lectura |
+| Voto único por petición | Pero reversible |
+| Un alias por usuario | Se guarda y reutiliza en todos los comentarios |
+| Filtro de lenguaje | Títulos, descripciones, comentarios y alias pasan por filtro automático |
+| Archivado automático | Inactividad de votos < 10% del periodo anterior tras 8 días |
+| Reseña única por profesor/curso | No se puede repetir la misma combinación usuario + profesor + curso |
+| Moderación manual | El staff decide qué hacer con cada denuncia |
+| Seguimiento institucional | El staff puede adjuntar PDFs de respuesta oficial a las peticiones |
+
+---
+
+## Pantallas / Flujos Principales para la App Android
+
+1. **Login** → ingreso con correo y contraseña
+2. **Registro** → correo institucional + contraseña
+3. **Verificación** → ingresar código recibido por correo
+4. **Home / Lista de peticiones** → listado con votos, tiempo restante y estadísticas
+5. **Detalle de petición** → info completa + comentarios + botón votar + seguimiento
+6. **Crear petición** → título, descripción, categoría
+7. **Comentar** → texto + alias
+8. **Dashboard / Mis peticiones** → activas y archivadas con métricas
+9. **Perfil público** → de cualquier usuario
+10. **Editar perfil** → alias, nombre real, privacidad
+11. **Denunciar** → petición o comentario con razón
+12. **Mis denuncias** → historial propio
+13. **Notificaciones** → respuestas del staff
+14. **Lista de profesores** → búsqueda, filtro, ranking
+15. **Detalle de profesor** → promedios por categoría + reseñas
+16. **Escribir reseña** → 4 calificaciones + comentario + anonimato
